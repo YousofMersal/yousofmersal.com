@@ -20,5 +20,11 @@ pub fn Markdown<'a>(cx: Scope<'a, MarkdownProps<'a>>) -> Element {
     let md_parser = use_markdown(&cx);
     let content = md_parser(cx.props.content.clone());
     let extra_class = &cx.props.class;
-    cx.render(rsx! {article { id: "markdown-body", class: "prose dark:prose-invert dark:prose-blockquote:border-gray-500 {extra_class}", dangerous_inner_html: "{content}" }})
+    cx.render(rsx! {
+        article {
+            id: "markdown-body",
+            class: "prose dark:prose-invert dark:prose-blockquote:border-gray-500 {extra_class}",
+            dangerous_inner_html: "{content}"
+        }
+    })
 }

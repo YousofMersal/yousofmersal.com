@@ -1,11 +1,8 @@
 use dioxus::prelude::*;
 use dioxus_router::Link;
-// use dioxus_free_icons::icons::fa_solid_icons::{FaHouse, FaSun, FaMoon, FaBook, FaGithub};
-// use dioxus_free_icons::Icon;
-// use dioxus_free_icons::icons::*;
 use dioxus_material_icons::MaterialIcon;
 
-use crate::hooks::mode::{is_dark, mode};
+use crate::hooks::mode::{is_dark, mode, color_scheme_icon};
 
 pub fn Footer(cx: Scope) -> Element {
     log::info!("dark mode: {:?}", is_dark(&cx));
@@ -20,7 +17,7 @@ pub fn Footer(cx: Scope) -> Element {
             Link {
                 class: "text-black dark:text-white hover:text-gray-800 dark:hover:text-gray-200",
                 to: "/",
-                MaterialIcon { name: "home", size: 26 }
+                MaterialIcon { name: "home", size: 26, color: color_scheme_icon(cx) }
             }
             a {
                 class: "text-black dark:text-white hover:text-gray-800 dark:hover:text-gray-200",
@@ -30,17 +27,17 @@ pub fn Footer(cx: Scope) -> Element {
                     mode(&cx, is_dark);
                     cx.needs_update();
                 },
-                MaterialIcon { name: mode_icon, size: 26 }
+                MaterialIcon { name: mode_icon, size: 26, color: color_scheme_icon(cx) }
             }
             Link {
                 class: "text-black dark:text-white hover:text-gray-800 dark:hover:text-gray-200",
                 to: "/about",
-                MaterialIcon { size: 26 name: "menu_book" }
+                MaterialIcon { size: 26, name: "menu_book", color: color_scheme_icon(cx) }
             }
             a {
                 class: "text-black dark:text-white hover:text-gray-800 dark:hover:text-gray-200",
                 href: "https://github.com/yousofmersal",
-                MaterialIcon { size: 26, name: "code" }
+                MaterialIcon { size: 26, name: "code", color: color_scheme_icon(cx) }
             }
         }
     })

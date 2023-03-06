@@ -32,10 +32,10 @@ fn App(cx: Scope) -> Element {
         // dioxus toast manager init
         ToastFrame { manager: use_atom_ref(cx, TOAST_MANAGER), maximum: 6 }
         // to use material icons
-        MaterialIconStylesheet{}
+        MaterialIconStylesheet {}
         // dioxus router info
-        Navbar {}
-        Router {
+        Router { 
+            Navbar {}
             Route { to: "/", HelloDioxus {} }
             Route { to: "/hi/:name", SayHi {} }
             Route { to: "/about", About {} }

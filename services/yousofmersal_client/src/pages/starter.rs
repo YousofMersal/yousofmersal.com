@@ -10,7 +10,6 @@ use crate::{
     components::{
         content::{Href, Markdown},
         footer::Footer,
-        navbar::Navbar,
     },
     TOAST_MANAGER,
 };
@@ -42,11 +41,6 @@ pub fn HelloDioxus(cx: Scope) -> Element {
                                     dioxus_elements::input_data::keyboard_types::Code::Enter => {
                                         eval("document.getElementById('submit-button').click()");
                                     }
-                                    // },
-                                    // dioxus::events::KeyCode::Enter => {
-                                    //     eval("document.getElementById('submit-button').click()");
-                                    // }
-
                                     _ => {}
                                 }
                             },
@@ -70,7 +64,7 @@ pub fn HelloDioxus(cx: Scope) -> Element {
                     }
                 }
             }
-    Footer {}
+            Footer {}
         }
     })
 }
@@ -84,7 +78,9 @@ pub fn SayHi(cx: Scope) -> Element {
             div { class: "flex h-full w-full items-center justify-center container mx-auto px-8",
                 div { class: "max-w-2xl text-center",
                     h1 { class: "text-3xl sm:text-5xl capitalize tracking-widest dark:text-white lg:text-6xl",
-                        "Hi, \"{name}\""
+                        "Hi, "
+                        {name},
+                        ""
                     }
                     Footer {}
                 }

@@ -1,4 +1,5 @@
 use dioxus::core::ScopeState;
+use dioxus_material_icons::MaterialIconColor;
 // use crate::hooks::use_storage;
 use dioxus_use_storage::use_local_storage;
 
@@ -33,4 +34,12 @@ pub fn init_mode_info(cx: &ScopeState) {
             let _ = js_sys::eval("document.documentElement.classList.remove('dark');");
         }
     });
+}
+
+pub fn color_scheme_icon(cx: &ScopeState) -> MaterialIconColor {
+    if is_dark(cx) {
+        MaterialIconColor::Light
+    } else {
+        MaterialIconColor::Dark
+    } 
 }
