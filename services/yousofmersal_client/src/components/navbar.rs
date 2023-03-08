@@ -39,7 +39,7 @@ pub fn Navbar(cx: Scope) -> Element {
                         }
                     }
                     div {
-                        class: "z-50 block my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-600 dark:divide-gray-500",
+                        class: "z-50 hidden block my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-600 dark:divide-gray-500",
                         id: "user-dropdown",
                         "data-popper-placement": "bottom",
                         div { class: "px-4 py-3",

@@ -14,6 +14,10 @@ out_dir = "dist"
 # resource (static) file folder
 asset_dir = "public"
 
+[application.tools]
+# binaryen = { wasm_opt = true}
+tailwindcss = { input = "./tailwind/tailwind.css", config = "./tailwind/tailwind.config.js" }
+
 [web.app]
 
 # HTML title tag content
@@ -33,12 +37,15 @@ index_on_404 = true
 [web.resource]
 
 # CSS style file
-style = []
+style = [
+  # "https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.3/flowbite.min.css"
+]
 
 # Javascript code file
 script = [
-    "/assets/tailwind/tailwind.min.js",
-    "/assets/tailwind/tailwindcss.config.js",
+    # "/assets/tailwind/tailwind.min.js",
+    # "/assets/tailwind/tailwindcss.config.js",
+    "https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.3/flowbite.js"
 ]
 
 [web.resource.dev]
@@ -51,10 +58,9 @@ script = []
 
 available = true
 
-loader = [
-# "/home/yousof/MassStorage/Documents/code/rust/yousofmersal.com/services/yousofmersal_client/dioxus-binaryen-plugin"
-]
+# loader = [
+#   "./dioxus-binaryen-plugin/bin"
+# ]
 
 [plugin.dioxus-binaryen]
-
 optimize = true
