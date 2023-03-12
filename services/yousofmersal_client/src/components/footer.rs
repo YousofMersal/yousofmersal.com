@@ -1,8 +1,8 @@
 use dioxus::prelude::*;
+use dioxus_free_icons::{Icon, icons::fa_solid_icons, icons::fa_brands_icons};
 use dioxus_router::Link;
-use dioxus_material_icons::MaterialIcon;
 
-use crate::hooks::mode::{is_dark, mode, color_scheme_icon};
+use crate::hooks::mode::{is_dark, mode};
 
 pub fn Footer(cx: Scope) -> Element {
     log::info!("dark mode: {:?}", is_dark(&cx));
@@ -17,7 +17,7 @@ pub fn Footer(cx: Scope) -> Element {
             Link {
                 class: "text-black dark:text-white hover:text-gray-800 dark:hover:text-gray-200",
                 to: "/",
-                MaterialIcon { name: "home", size: 26, color: color_scheme_icon(cx) }
+                Icon { height: 26, width:26, icon: fa_solid_icons::FaHouse }
             }
             a {
                 class: "text-black dark:text-white hover:text-gray-800 dark:hover:text-gray-200",
@@ -27,17 +27,23 @@ pub fn Footer(cx: Scope) -> Element {
                     mode(&cx, is_dark);
                     cx.needs_update();
                 },
-                MaterialIcon { name: mode_icon, size: 26, color: color_scheme_icon(cx) }
+            
+                if is_dark(&cx) {
+                     rsx! { Icon { height: 26, width:26, icon: fa_solid_icons::FaSun } }
+                 } else {
+                     rsx! { Icon { height: 26, width:26, icon: fa_solid_icons::FaMoon } }
+                 }
             }
             Link {
                 class: "text-black dark:text-white hover:text-gray-800 dark:hover:text-gray-200",
                 to: "/about",
-                MaterialIcon { size: 26, name: "menu_book", color: color_scheme_icon(cx) }
+                Icon { height: 26, width:26, icon: fa_solid_icons::FaBook }
             }
             a {
                 class: "text-black dark:text-white hover:text-gray-800 dark:hover:text-gray-200",
                 href: "https://github.com/yousofmersal",
-                MaterialIcon { size: 26, name: "code", color: color_scheme_icon(cx) }
+                // MaterialIcon { size: 26, name: "code", color: color_scheme_icon(cx) }
+                Icon {height: 26, width: 26, icon: fa_brands_icons::FaGithub }
             }
         }
     })

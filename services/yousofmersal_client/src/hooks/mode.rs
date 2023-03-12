@@ -1,6 +1,4 @@
 use dioxus::core::ScopeState;
-use dioxus_material_icons::MaterialIconColor;
-// use crate::hooks::use_storage;
 use dioxus_use_storage::use_local_storage;
 
 pub fn is_dark(cx: &ScopeState) -> bool {
@@ -18,9 +16,9 @@ pub fn mode(cx: &ScopeState,dark: bool) {
     let storage = use_local_storage(cx);
     let state = storage.insert("mode", if dark { "dark" } else { "light" });
     if dark && state {
-        let _ = js_sys::eval("document.documentElement.classList.add('dark');");
+        let _ = js_sys::eval("document.documentElement.setAttribute('data-theme', 'dark');");
     } else {
-        let _ = js_sys::eval("document.documentElement.classList.remove('dark');");
+        let _ = js_sys::eval("document.documentElement.setAttribute('data-theme', 'light');");
     }
 }
 
@@ -29,17 +27,9 @@ pub fn init_mode_info(cx: &ScopeState) {
     cx.use_hook( move || {
         let dark = storage.get("mode").unwrap_or("light".to_string()) == "dark";
         if dark {
-            let _ = js_sys::eval("document.documentElement.classList.add('dark');");
+            let _ = js_sys::eval("document.documentElement.setAttribute('data-theme', 'dark');");
         } else {
-            let _ = js_sys::eval("document.documentElement.classList.remove('dark');");
+            let _ = js_sys::eval("document.documentElement.setAttribute('data-theme', 'light');");
         }
     });
-}
-
-pub fn color_scheme_icon(cx: &ScopeState) -> MaterialIconColor {
-    if is_dark(cx) {
-        MaterialIconColor::Light
-    } else {
-        MaterialIconColor::Dark
-    } 
 }

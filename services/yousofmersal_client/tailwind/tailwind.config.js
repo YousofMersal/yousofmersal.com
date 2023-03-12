@@ -10,12 +10,11 @@ module.exports = {
     utils: true,
     logs: true,
     rtl: false,
-    prefix: "",
-    darkTheme: "dark"
+    prefix: ""
   },
+  darkMode: ["class", '[data-theme="dark"]'],
   theme: {
     mode: 'jit',
-    darkMode: "class",
     colors: {
       ico: '#303841',
       slate: colors.slate

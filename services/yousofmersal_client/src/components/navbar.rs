@@ -1,91 +1,87 @@
 use dioxus::prelude::*;
-use dioxus_router::Link;
 use crate::components::icon::Logo_c;
 
 pub fn Navbar(cx: Scope) -> Element {
     // let is_hidden = use_state(cx , || "hidden");
 
     cx.render(rsx! {
-        nav { class: "bg-gray-200 border-gray-200 sm:px-2 py-2.5 rounded dark:bg-gray-700",
-            div { class: "container flex flex-wrap items-center justify-between mx-auto",
-                Link { to: "/", class: "",
-                    a { class: "flex items-center",
-                        Logo_c { width: 32, height: 32, class: "dark:ICON h-6 mr-3 sm:h-9" }
-                        span { class: "self-center text-xl font-light whitespace-nowrap dark:text-white",
-                            "YM"
-                        }
-                    }
-                }
-                div { class: "flex items-center md:order-2",
-                    button {
-                        class: "flex mr-3 text-sm bg-gray-800 rounded-full md:mr-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600",
-                        r#type: "button",
-                        aria_expanded: "false",
-                        "data-dropdown-toggle": "user-dropdown",
-                        "data-dropdown-placement": "bottom",
-                        id: "user-menu-button",
-                        // onclick: move |_| {
-                        //     if is_hidden.get() == &"hidden" {
-                        //         is_hidden.set("block");
-                        //     } else {
-                        //         is_hidden.set("hidden");
-                        //     }
-                        // },
-                        span { class: "sr-only", "Open user menu" },
-                        img {
-                            class: "w-8 h-8 rounded-full",
-                            src: "https://t3.ftcdn.net/jpg/02/22/85/16/360_F_222851624_jfoMGbJxwRi5AWGdPgXKSABMnzCQo9RN.jpg",
-                            alt: "user photo"
-                        }
-                    }
-                    div {
-                        class: "z-50 hidden block my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-600 dark:divide-gray-500",
-                        id: "user-dropdown",
-                        "data-popper-placement": "bottom",
-                        div { class: "px-4 py-3",
-                            span { class: "block text-sm text-gray-900 dark:text-white", "Yousof Mersal" }
-                            span { class: "block text-sm font-medium text-gray-500 truncate dark:text-gray-400", "name@yousofmersal.com"}
-                        }
-                        ul { class: "py-2", aria_labelledby: "user-menu-button",
-                            li {
-                                a { class: "block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white", href: "#", "Your Profile" }
-                            }
-                            li {
-                                a { class: "block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white", href: "#", "Your Profile" }
-                            }
-                        }
-                    }
-                    button {
-                        r#type: "button",
-                        "data-collapse-toggle": "mobile-menu-2",
-                        class: "inline-flex items-center p-2 ml-1 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600",
-                        aria_controls: "mobile-menu-2",
-                        aria_expanded: "false",
-                        span { class: "sr-only", "Open main menu" }
-                        svg { class: "w-6 h-6", "aria-hidden": "true", fill: "currentColor", view_box:"0 0 20 20", xmlns: "http://www.w3.org/2000/svg", 
+        header { class: "sticky top-0 z-50 navbar bg-base-100 mb-32 shadow-xl rounded-box",
+            div { class: "navbar-start",
+                div { class: "dropdown",
+                    label { class: "btn btn-ghost lg:hidden",
+                        tabindex: "0",
+                        svg {
+                            xmlns: "http://www.w3.org/2000/svg",
+                            class: "h-5 w-5",
+                            "fill": "none",
+                            view_box: "0 0 24 24",
+                            "stroke": "currentColor",
                             path {
-                                "fill-rule": "evenodd",
-                                d: "M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z",
-                                "clip-rule": "evenodd"
+                                "stroke-linecap": "round",
+                                "stroke-linejoin": "round",
+                                "stroke-width": "2",
+                                d: "M4 6h16M4 12h8m-8 6h16"
                             }
                         }
                     }
+                    ul { tabindex: "0",
+                        class: "menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52",
+                        li { a { "Home" } }
+                    }
                 }
-                // div {
-                //     class: "items-center justify-between hidden w-full md:flex md:w-auto md:order-1", id: "mobile-menu-2",
-                //     ul {
-                //         class: "flex flex-col p-4 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700",
-                //         li {
-                //             a {
-                //                 href: "#",
-                //                 class: "block py-2 pl-3 pr-4 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white",
-                //                 "aria-current": "page",
-                //                 "Home"
-                //             }
-                //         }
-                //     }
-                // }
+                a { class: "btn btn-ghost btn-circle avatar",
+                    Logo_c { width: 40, height: 40, class: "" }
+                }
+            }
+            div { class: "navbar-center hidden lg:flex",
+                ul { class: "menu menu-horizontal px-1",
+                    li{ a { "Home" } }
+                }
+            }
+            div{ class: "navbar-end",
+                div { class: "flex flex-row gap-2",
+                    div { class: "form-control hidden lg:flex", 
+                        input { r#type: "text", placeholder: "Seach", class: "input input-bordered" }
+                    }
+                    div {class: "",
+                        button { class: "btn btn-ghost btn-circle lg:hidden",
+                            svg {
+                                xmlns: "http://www.w3.org/2000/svg",
+                                class: "h-5 w-5",
+                                "fill": "none",
+                                view_box: "0 0 24 24",
+                                "stroke": "currentColor",
+                                path {
+                                    "stroke-linecap": "round",
+                                    "stroke-linejoin": "round",
+                                    "stroke-width": "2",
+                                    d: "M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                                }
+                            }
+                        }
+                    }
+                    div {class: "dropdown dropdown-end", 
+                        label { tabindex: "0", class: "btn btn-ghost btn-circle avatar", 
+                            div { class: "w-10 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2",
+                                img { src: "https://www.tenforums.com/geek/gars/images/2/types/thumb_15951118880user.png" }
+                            }
+                        }
+                        ul { 
+                            tabindex: "0",
+                            class: "mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-200 rounded-box w-52",
+                            li {
+                                a { class: "justify-between", 
+                                "Profile"
+                                span { class: "badge", "New" }
+                                } 
+                            }
+                            li { a { class: "justify-between", "Settings" } }
+                            li { a { class: "justify-between", "Logout" } }
+                        }
+                    }
+                }
             }
         }
     })
 }
+
