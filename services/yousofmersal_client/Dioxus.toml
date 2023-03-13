@@ -38,7 +38,7 @@ index_on_404 = true
 
 # CSS style file
 style = [
-  # "https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.3/flowbite.min.css"
+  # "/tailwind.css"
 ]
 
 # Javascript code file

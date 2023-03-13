@@ -29,9 +29,9 @@ pub fn Footer(cx: Scope) -> Element {
                 },
             
                 if is_dark(&cx) {
-                     rsx! { Icon { height: 26, width:26, icon: fa_solid_icons::FaSun } }
+                     rsx! { Icon { height: 26, width:26, icon: fa_solid_icons::FaSun class: "swap-active"} }
                  } else {
-                     rsx! { Icon { height: 26, width:26, icon: fa_solid_icons::FaMoon } }
+                     rsx! { Icon { height: 26, width:26, icon: fa_solid_icons::FaMoon, class: "swap-active" } }
                  }
             }
             Link {

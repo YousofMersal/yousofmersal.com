@@ -2,12 +2,12 @@ use dioxus::prelude::*;
 use dioxus_router::{use_route, use_router};
 use dioxus_toast::ToastInfo;
 use fermi::use_atom_ref;
-use gloo::utils::window;
+use gloo::console;
 
 use crate::{
     components::{
         content::Markdown,
-        footer::Footer, navbar::Navbar,
+        footer::Footer,
     },
     TOAST_MANAGER,
 };
@@ -19,7 +19,6 @@ pub fn HelloDioxus(cx: Scope) -> Element {
 
     cx.render(rsx! {
         section { class: "h-screen bg-cover",
-            Navbar {}
             div { class: "flex h-full w-full items-center justify-center container mx-auto px-8",
                 div { class: "max-w-2xl text-center",
                     h1 { class: "text-3xl sm:text-5xl capitalize tracking-widest text-gray-600 dark:text-white lg:text-6xl",
@@ -59,20 +58,19 @@ pub fn HelloDioxus(cx: Scope) -> Element {
 
 pub fn SayHi(cx: Scope) -> Element {
     let route = use_route(&cx);
-    let name = route.segment("name").unwrap();
+    let name = route.segment("name").expect("Could not read name segment");
     let name = urlencoding::decode(name).expect("UTF-8").to_string();
     cx.render(rsx! {
-        section { class: "h-screen bg-cover bg-white dark:bg-gray-600",
+        section { class: "h-screen bg-cover dark:bg-gray-600",
             div { class: "flex h-full w-full items-center justify-center container mx-auto px-8",
                 div { class: "max-w-2xl text-center",
                     h1 { class: "text-3xl sm:text-5xl capitalize tracking-widest dark:text-white lg:text-6xl",
                         "Hi, "
-                        name,
-                        ""
+                        name
                     }
-                    Footer {}
                 }
             }
+            Footer {}
         }
     })
 }
