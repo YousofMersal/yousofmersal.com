@@ -1,6 +1,7 @@
 use dioxus::prelude::*;
 
-pub fn NotFound(cx: Scope) -> Element {
+#[inline_props()]
+pub fn NotFound(cx: Scope, segments: Vec<String>) -> Element {
     cx.render(rsx! {
         section { class: "h-screen bg-cover bg-white",
             div { class: "flex h-full w-full items-center justify-center container mx-auto px-8",

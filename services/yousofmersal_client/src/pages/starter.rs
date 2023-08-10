@@ -1,21 +1,18 @@
 use dioxus::prelude::*;
-use dioxus_router::{use_route, use_router};
+use dioxus_router::prelude::{use_navigator, use_route, use_router};
 use dioxus_toast::ToastInfo;
 use fermi::use_atom_ref;
 use gloo::console;
 
 use crate::{
-    components::{
-        content::Markdown,
-        footer::Footer,
-    },
+    components::{content::Markdown, footer::Footer},
     TOAST_MANAGER,
 };
 
 pub fn HelloDioxus(cx: Scope) -> Element {
     let input_name = use_state(&cx, String::new);
-    let router = use_router(&cx);
-    let toast = use_atom_ref(&cx, TOAST_MANAGER);
+    let router = use_navigator(&cx);
+    let toast = use_atom_ref(&cx, &TOAST_MANAGER);
 
     cx.render(rsx! {
         section { class: "h-screen bg-cover",
@@ -41,7 +38,7 @@ pub fn HelloDioxus(cx: Scope) -> Element {
                             onclick: move |_| {
                                 let name = input_name.get();
                                 if !name.is_empty() {
-                                    router.navigate_to(&format!("/hi/{name}"));
+                                    router.push(&format!("/hi/{name}"));
                                 } else {
                                     toast.write().popup(ToastInfo::error("Empty input box", "Dioxus Toast"));
                                 }
@@ -56,9 +53,8 @@ pub fn HelloDioxus(cx: Scope) -> Element {
     })
 }
 
-pub fn SayHi(cx: Scope) -> Element {
-    let route = use_route(&cx);
-    let name = route.segment("name").expect("Could not read name segment");
+#[inline_props]
+pub fn SayHi(cx: Scope, name: String) -> Element {
     let name = urlencoding::decode(name).expect("UTF-8").to_string();
     cx.render(rsx! {
         section { class: "h-screen bg-cover dark:bg-gray-600",
@@ -88,7 +84,7 @@ pub fn About(cx: Scope) -> Element {
             Footer {}
             div {class: "hidden toast toast-start flex flex-col-reverse",
                 div {class: "alert alert-error alert-warning alert-info alert-success"}
-            
+
     }
         }
     })

@@ -1,6 +1,6 @@
 use dioxus::prelude::*;
 use dioxus_free_icons::{Icon, icons::fa_solid_icons, icons::fa_brands_icons};
-use dioxus_router::Link;
+use dioxus_router::prelude::Link;
 
 use crate::hooks::mode::{is_dark, mode};
 
@@ -29,7 +29,7 @@ pub fn Footer(cx: Scope) -> Element {
                 },
             
                 if is_dark(&cx) {
-                     rsx! { Icon { height: 26, width:26, icon: fa_solid_icons::FaSun class: "swap-active"} }
+                     rsx! { Icon { height: 26, width:26, icon: fa_solid_icons::FaSun, class: "swap-active"} }
                  } else {
                      rsx! { Icon { height: 26, width:26, icon: fa_solid_icons::FaMoon, class: "swap-active" } }
                  }
