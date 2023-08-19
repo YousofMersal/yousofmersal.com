@@ -22,8 +22,9 @@ fermi = { version = "0.4.0" }
 js-sys = "0.3.61"
 web-sys = { version = "0.3.61", features = ["Storage"] }
 dioxus-free-icons = { version = "0.7.0", features = ["font-awesome-brands", "font-awesome-solid" ] }
+# dioxus-toast = { git = "https://github.com/YousofMersal/dioxus-toast", default-features = false, features = ["web"] }
 dioxus-toast = { git = "https://github.com/YousofMersal/dioxus-toast", default-features = false, features = ["web"] }
-gloo = "0.9.0"
+gloo = "0.10.0"
 log = "0.4.17"
 wasm-logger = "0.2.0"
 anyhow = "1.0.69"

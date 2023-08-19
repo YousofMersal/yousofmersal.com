@@ -50,17 +50,10 @@ fn NavFooter(cx: Scope) -> Element {
 fn App(cx: Scope) -> Element {
     // init mode information
     init_mode_info(&cx);
-    use_init_atom_root(cx);
+    use_init_atom_root(&cx);
 
-    // TODO: fix toast manager
     render! {
-    //     ToastFrame { manager: use_atom_ref(cx, TOAST_MANAGER) }
+        ToastFrame { manager: use_atom_ref(&cx, &TOAST_MANAGER) }
         Router::<Route> {}
     }
-
-    // render! {
-    //     // dioxus toast manager init
-    //     ToastFrame { manager: use_atom_ref(cx, TOAST_MANAGER) }
-    //     // dioxus router info
-    // }
 }
