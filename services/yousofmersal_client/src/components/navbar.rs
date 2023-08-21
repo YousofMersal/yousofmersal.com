@@ -5,7 +5,7 @@ pub fn Navbar(cx: Scope) -> Element {
     // let is_hidden = use_state(cx , || "hidden");
 
     cx.render(rsx! {
-        header { class: "sticky top-0 z-50 navbar bg-base-100 mb-32 shadow-xl rounded-box",
+        header { class: "sticky top-0 z-50 navbar bg-base-100 shadow-xl rounded-box",
             div { class: "navbar-start",
                 div { class: "dropdown",
                     label { class: "btn btn-ghost lg:hidden",

@@ -13,7 +13,7 @@ pub fn Footer(cx: Scope) -> Element {
     };
 
     cx.render(rsx! {
-        div { class: "w-screen mb-2 fixed bottom-0 flex mt-6 space-x-4 justify-center",
+        div { class: "mb-2 fixed bottom-0 flex mt-6 justify-center footer",
             Link {
                 class: "text-black dark:text-white hover:text-gray-800 dark:hover:text-gray-200",
                 to: "/",
