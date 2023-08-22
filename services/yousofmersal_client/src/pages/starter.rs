@@ -18,7 +18,7 @@ pub fn HelloDioxus(cx: Scope) -> Element {
         content_wrap {
             div { class: "max-w-2xl text-center",
                 h1 { class: "text-3xl sm:text-5xl capitalize tracking-widest text-gray-600 dark:text-white lg:text-6xl",
-                    "Yousof site"
+                    "Yousof's site"
                 }
                 p { class: "mt-6 lg:text-lg text-gray-600 dark:text-white",
                     "Opinionated Dioxus Starter Template"

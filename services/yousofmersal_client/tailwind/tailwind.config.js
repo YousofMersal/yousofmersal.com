@@ -2,10 +2,9 @@
 const colors = require('tailwindcss/colors');
 
 module.exports = {
-  content: [ "./src/**/*.rs" ],
+  content: ["./src/**/*.{rs,html,css}"],
   daisyui: {
     styled: true,
-    themes: true,
     base: true,
     utils: true,
     logs: true,
@@ -14,7 +13,6 @@ module.exports = {
   },
   darkMode: ["class", '[data-theme="dark"]'],
   theme: {
-    mode: 'jit',
     colors: {
       ico: '#303841',
       slate: colors.slate

@@ -19,15 +19,15 @@ dioxus = {version = "0.4.0", features = ["hot-reload"] }
 dioxus-web = { version = "0.4.0" }
 dioxus-router = { version = "0.4.1", features = ["web"]}
 fermi = { version = "0.4.0" }
-js-sys = "0.3.61"
-web-sys = { version = "0.3.61", features = ["Storage"] }
+js-sys = "0.3.64"
+web-sys = { version = "0.3.64", features = ["Storage"] }
 dioxus-free-icons = { version = "0.7.0", features = ["font-awesome-brands", "font-awesome-solid" ] }
 # dioxus-toast = { git = "https://github.com/YousofMersal/dioxus-toast", default-features = false, features = ["web"] }
 dioxus-toast = { git = "https://github.com/YousofMersal/dioxus-toast", default-features = false, features = ["web"] }
 gloo = "0.10.0"
 log = "0.4.17"
 wasm-logger = "0.2.0"
-anyhow = "1.0.69"
-urlencoding = "2.1.2"
-pulldown-cmark = "0.9.2"
+anyhow = "1.0.75"
+urlencoding = "2.1.3"
+pulldown-cmark = "0.9.3"
 dioxus-use-storage = { git = "https://github.com/YousofMersal/dioxus-hooks" }

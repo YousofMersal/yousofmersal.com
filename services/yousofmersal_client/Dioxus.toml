@@ -15,7 +15,7 @@ out_dir = "dist"
 asset_dir = "public"
 
 [application.tools]
-# binaryen = { wasm_opt = true}
+binaryen = { wasm_opt = true}
 tailwindcss = { input = "./tailwind/tailwind.css", config = "./tailwind/tailwind.config.js" }
 
 [web.app]
@@ -30,6 +30,8 @@ watch_path = [
     "public", 
     "Dioxus.toml",
 ]
+
+reload_html = true
 
 index_on_404 = true
 

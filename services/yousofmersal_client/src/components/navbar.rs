@@ -1,5 +1,6 @@
 use dioxus::prelude::*;
 use crate::components::icon::Logo_c;
+use dioxus_router::prelude::Link;
 
 pub fn Navbar(cx: Scope) -> Element {
     // let is_hidden = use_state(cx , || "hidden");
@@ -26,16 +27,17 @@ pub fn Navbar(cx: Scope) -> Element {
                     }
                     ul { tabindex: "0",
                         class: "menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-200 rounded-box w-52",
-                        li { a { "Home" } }
+                        li { Link {to: "/", "Home" } }
                     }
                 }
-                a { class: "btn btn-ghost btn-circle avatar",
+                Link { class: "btn btn-ghost btn-circle avatar",
+                    to: "/",
                     Logo_c { width: 40, height: 40, class: "" }
                 }
             }
             div { class: "navbar-center hidden lg:flex",
                 ul { class: "menu menu-horizontal px-1",
-                    li{ a { "Home" } }
+                    li{ Link {to: "/", "Home" } }
                 }
             }
             div{ class: "navbar-end",
