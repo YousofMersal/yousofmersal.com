@@ -25,7 +25,7 @@ dioxus-free-icons = { version = "0.7.0", features = ["font-awesome-brands", "fon
 # dioxus-toast = { git = "https://github.com/YousofMersal/dioxus-toast", default-features = false, features = ["web"] }
 dioxus-toast = { git = "https://github.com/YousofMersal/dioxus-toast", default-features = false, features = ["web"] }
 gloo = "0.10.0"
-log = "0.4.17"
+log = "0.4.20"
 wasm-logger = "0.2.0"
 anyhow = "1.0.75"
 urlencoding = "2.1.3"
